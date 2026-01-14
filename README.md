@@ -20,10 +20,15 @@ It provides standard JSON responses for success, error, validation errors, and p
 
 ## Installation
 
+Install via Packagist:
+<a href='https://packagist.org/packages/alamindev27/laravel-api-responder'>https://packagist.org/packages/alamindev27/laravel-api-responder</a>
+
+<i>OR</i>
+
 Require the package using Composer:
 
 ```bash
-composer require alamindev27/api-responder
+composer require alamindev27/laravel-api-responder
 ```
 
 Local development: If you are developing locally, use a path repository in your Laravel project `composer.json`:
@@ -73,7 +78,9 @@ return ApiResponder::success(
     "status": true,
     "message": "API working",
     "data": {
-        "name": "Amin"
+        "name": "Al-Amin",
+        "email": "alamindev27@gmail.com",
+        "age": "27"
     }
 }
 ```
@@ -170,5 +177,5 @@ Feel free to fork this repository and submit pull requests.
 Please follow PSR-12 coding standards and write tests for new features.
 
 ## License
-MIT License © MD Al-Amin
+MIT License © <a href='alamindev27.com'>MD Al-Amin</a>
 
