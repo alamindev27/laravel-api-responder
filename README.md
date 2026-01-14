@@ -66,8 +66,7 @@ Success Response
 use Alamindev27\ApiResponder\Facades\ApiResponder;
 
 return ApiResponder::success(
-    ['name' => 'Amin'], 
-    'API working'
+    ["name": "Al-Amin", "email": "alamindev27@gmail.com", "age": "27"], 'API working'
 );
 ```
 
