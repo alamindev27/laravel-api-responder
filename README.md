@@ -177,5 +177,5 @@ Feel free to fork this repository and submit pull requests.
 Please follow PSR-12 coding standards and write tests for new features.
 
 ## License
-MIT License © <a href='alamindev27.com'>MD Al-Amin</a>
+MIT License © <a href='https://alamindev27.com'>MD Al-Amin</a>
 
