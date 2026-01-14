@@ -63,7 +63,7 @@ You can change default success/error messages, status keys, and pagination keys 
 Success Response
 
 ```bash
-use ApiResponder;
+use Alamindev27\ApiResponder\Facades\ApiResponder;
 
 return ApiResponder::success(
     ['name' => 'Amin'], 
