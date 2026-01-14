@@ -5,7 +5,7 @@ It provides standard JSON responses for success, error, validation errors, and p
 
 ---
 
-## ✅ Features
+## Features
 
 - Standardized JSON API responses
 - Success responses with optional custom messages
@@ -18,9 +18,12 @@ It provides standard JSON responses for success, error, validation errors, and p
 
 ---
 
-## 📦 Installation
+## Installation
 
 Require the package using Composer:
 
 ```bash
 composer require alamindev27/api-responder
+```
+
+Local development: If you are developing locally, use a path repository in your Laravel project
