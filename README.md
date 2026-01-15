@@ -65,37 +65,50 @@ Success Response
 ```bash
 use Alamindev27\ApiResponder\Facades\ApiResponder;
 
-return ApiResponder::success(
-    ["name": "Al-Amin", "email": "alamindev27@gmail.com", "age": "27"], 'API working'
-);
+$datas = [
+    'name' => 'MD Al-Amin', 'email' => 'alamindev27@gmail.com', 'age' => 26, 'profession' => 'Web Developer'
+];
+
+$meta = [
+    "request_id" => "64f8a2c1e4d7a"
+];
+
+$message = 'Data fatch Successfully';
+
+return ApiResponder::success($datas, $message, $meta, 200);
 ```
 
 ## Output:
 
 ```bash
 {
-    "status": true,
-    "message": "API working",
+    "status": 200,
+    "message": "Data fatch Successfully",
     "data": {
         "name": "Al-Amin",
         "email": "alamindev27@gmail.com",
         "age": "27"
-    }
+    },
+    "meta": [
+        "request_id":"64f8a2c1e4d7a"
+    ]
 }
 ```
 
 ## Error Response
 
 ```bash
-return ApiResponder::error('Something went wrong', [], 400);
+
+    return ApiResponder::error('Something went wrong', [], 400);
 ```
 
 ## Output:
 ```bash
 {
-    "status": false,
+    "status": 400,
     "message": "Something went wrong",
-    "data": []
+    "data": [],
+    "meta": []
 }
 
 ```
@@ -111,7 +124,7 @@ return ApiResponder::validationError([
 ## Output:
 ```bash
 {
-    "status": false,
+    "status": 422,
     "message": "Validation Error",
     "errors": {
         "email": ["The email field is required."]
@@ -122,14 +135,20 @@ return ApiResponder::validationError([
 ## Paginated Response
 ```bash
 $data = User::paginate(10);
-return ApiResponder::paginate($data);
+$meta = [
+    "request_id" => "64f8a2c1e4d7a"
+];
+
+$message = 'Pagination data fatch Successfully';
+
+return ApiResponder::paginate($data, $message, $meta, 200);
 ```
 
 ## Output:
 ```bash
 {
-    "status": true,
-    "message": "Data retrieved successfully",
+    "status": 200,
+    "message": "Pagination data fatch Successfully",
     "data": [ /* user items */ ],
     "pagination": {
         "total": 100,
@@ -155,6 +174,9 @@ return [
         'current_page' => 'current_page',
         'last_page' => 'last_page',
     ],
+    "meta": [
+        "request_id":"64f8a2c1e4d7a"
+    ]
 ];
 ```
 

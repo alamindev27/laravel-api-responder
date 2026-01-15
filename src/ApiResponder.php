@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Config;
 class ApiResponder
 {
     // Success response
-    public function success($data = [], $message = null, $meta = [])
+    public function success($data = [], $message = null, $meta = [], $code = null)
     {
         $response = [
             'status' => Config::get('api-responder.success_status', true),
