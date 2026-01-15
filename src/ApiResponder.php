@@ -5,37 +5,59 @@ use Illuminate\Support\Facades\Config;
 
 class ApiResponder
 {
-    public function success($data = [], string $message = null)
+    // Success response
+    public function success($data = [], $message = null, $meta = [])
     {
-        return response()->json([
+        $response = [
             'status' => Config::get('api-responder.success_status', true),
             'message' => $message ?? Config::get('api-responder.success_message', 'Success'),
             'data' => $data,
-        ]);
+        ];
+
+        if (!empty($meta)) {
+            $response['meta'] = $meta;
+        }
+
+        return response()->json($response);
     }
 
-    public function error(string $message = null, $data = [], int $code = 400)
+    // Error response
+    public function error($data = [], $message = null, $meta = [], $code = null)
     {
-        return response()->json([
-            'status' => Config::get('api-responder.error_status', false),
+        $response = [
+            'status' => $code ?? Config::get('api-responder.error_status', false),
             'message' => $message ?? Config::get('api-responder.error_message', 'Something went wrong'),
             'data' => $data,
-        ], $code);
+        ];
+
+        if (!empty($meta)) {
+            $response['meta'] = $meta;
+        }
+
+        return response()->json($response, $code);
     }
 
-    public function validationError($errors = [], string $message = 'Validation Error', int $code = 422)
+    // Validation error response
+    public function validationError($errors = [], $message = null, $meta = [], $code = null)
     {
-        return response()->json([
-            'status' => Config::get('api-responder.error_status', false),
+        $response = [
+            'status' => $code ?? Config::get('api-responder.error_status', false),
             'message' => $message,
             'errors' => $errors,
-        ], $code);
+        ];
+
+        if (!empty($meta)) {
+            $response['meta'] = $meta;
+        }
+
+        return response()->json($response, $code);
     }
 
-    public function paginate($data, $message = 'Data retrieved successfully')
+    // Pagination response
+    public function paginate($data, $message = null, $meta = [], $code = null)
     {
-        return response()->json([
-            'status' => Config::get('api-responder.success_status', true),
+        $response = [
+            'status' => $code ?? Config::get('api-responder.success_status', true),
             'message' => $message,
             'data' => $data->items(),
             'pagination' => [
@@ -43,7 +65,13 @@ class ApiResponder
                 'per_page' => $data->perPage(),
                 'current_page' => $data->currentPage(),
                 'last_page' => $data->lastPage(),
-            ]
-        ]);
+            ],
+        ];
+
+        if (!empty($meta)) {
+            $response['meta'] = $meta;
+        }
+
+        return response()->json($response);
     }
 }
